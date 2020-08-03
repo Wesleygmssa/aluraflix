@@ -1,46 +1,36 @@
 {
   "categorias": [
     {
-      "titulo": "Front End",
+      "titulo": "Videos",
       "link": "https://www.alura.com.br/formacao-front-end",
       "cor": "#6BD1FF",
       "link_extra": {
-        "text": "Formação de Front End na Alura",
+        "text": "Videos 100% online para você dar o próximo passo na sua evolução. E o melhor, de graça!",
         "url": "https://www.alura.com.br/cursos-online-front-end"
       },
       "videos": [
         {
-          "titulo": "O que faz uma desenvolvedora front-end? #HipstersPontoTube",
-          "url": "https://www.youtube.com/watch?v=uWCA_xo7qNA&t=16s"
+          "titulo": "Contabilidade e Consultoria Financeira #Sabrina.contadora",
+          "url": "https://www.youtube.com/watch?v=k10SSDgGtec&t=90s"
+
         },
         {
           "titulo": "SEO com React",
-          "url": "https://www.youtube.com/watch?v=c8mVlakBESE"
+          "url": "https://www.youtube.com/watch?v=uWCA_xo7qNA&t=5s"
         },
         {
           "titulo": "Componentização com VanillaJS #AluraMais",
-          "url": "https://www.youtube.com/watch?v=LatCKpcOMak"
+          "url": "https://www.youtube.com/watch?v=4XPMnUeZ6AQ&t=1s"
         },
         {
           "titulo": "Pare de chutar e aprenda a display: inline #01",
-          "url": "https://www.youtube.com/watch?v=5PS6ku8NzIE"
+          "url": "https://www.youtube.com/watch?v=tqBUbEaRSfM&t=7s"
         },
         {
           "titulo": "Template String: Interpolando strings com JavaScript #AluraMais",
-          "url": "https://www.youtube.com/watch?v=ORI_HTXaIw0"
-        },
-        {
-          "titulo": "Qual é a melhor linguagem de programação? #HipstersPontoTube",
-          "url": "https://www.youtube.com/watch?v=Uh-GNH-t89w"
-        },
-        {
-          "titulo": "Novidades do Angular v9",
-          "url": "https://www.youtube.com/watch?v=34uHo7hFmG0"
-        },
-        {
-          "titulo": "Base para aprender os frameworks",
-          "url": "https://www.youtube.com/watch?v=QzDjdlF1BQI"
-        }        
+          "url": "https://www.youtube.com/watch?v=I9ctJWlRV1Y&t=7s"
+        }
+             
       ]
     },
     {
