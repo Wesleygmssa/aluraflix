@@ -4,51 +4,86 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../components/PageDefault';
 
 
-function CadastroCategoria(){
+function CadastroCategoria() {
 
-    const [nomeCategoria, setNomeCategoria] = useState('teste');
     const [categorias, setCategorias] = useState([]);
 
-    const handleSubmit = (event) =>{
-        event.preventDefault();
-        setCategorias([
-            ...categorias,
-            nomeCategoria
-        ]);
-        
+    const valoresIniciais ={
+        nome: 'Categoria Inicial',
+        descricao: 'Descrição inicial',
+        cor: '#000'
     }
 
-    return(
+    const [values, setValues] = useState(valoresIniciais);
+
+    function setValue(chave, valor){
+        setValues({ ...values,
+            [chave]: valor // nome: 'valor'
+        })
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setCategorias([
+            ...categorias, 
+            values]);
+    }
+
+    return (
         <PageDefault>
-            <h1> Cadastro de Categoria: {nomeCategoria}</h1>
+            <h1> Cadastro de Categoria: {values.nome}</h1>
             <Link to="/">
                 Ir para home
             </Link>
 
-          <form onSubmit={handleSubmit}>
-              <label>
-                  Nome da Categoria:
-                  <input 
-                  type="text" 
-                  value={nomeCategoria}
-                  onChange={(event)=>{setNomeCategoria(event.target.value)}} //mudança no value do input
-                  />
-              </label>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label>
+                        Nome da Categoria:
+                         <input
+                            type="text"
+                            value={values.nome}
+                            onChange={(event) => { setValue('nome', event.target.value) }} //mudança no value do input
+                             />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Descrição:
+                         <textarea
+                            type="text"
+                            value={values.descricao}
+                            onChange={(event) => { setValue('descricao', event.target.value) }} //mudança no value do input
+                             >
 
-              <button>
-                  Cadastrar
+                             </textarea>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Cor:
+                         <input
+                            type="color"
+                            value={values.cor}
+                            onChange={(event) => {  setValue('color', event.target.value) }} //mudança no value do input
+                             />
+                    </label>
+                </div>
+
+                <button>
+                    Cadastrar
               </button>
-          </form>
+            </form>
 
-          <ul>
-              {categorias.map((categoria, indice)=>{
-                  return(
-                      <li key={`${categoria}${indice}`}>
-                          {categoria}
-                      </li>
-                  )
-              })}
-          </ul>
+            <ul>
+                {categorias.map((categoria, indice) => {
+                    return (
+                        <li key={`${categoria}${indice}`}>
+                            {categoria}
+                        </li>
+                    )
+                })}
+            </ul>
         </PageDefault>
     )
 }
