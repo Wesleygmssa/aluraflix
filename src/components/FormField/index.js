@@ -72,7 +72,7 @@ const Input = styled.input`
   }}
 `;
 
-function FormField({ label, type, name, value, onChange }) {
+const FormField = ({ label, type, name, value, onChange }) => {
   const fieldId = `id_${name}`;
   // const tag = type === "textarea" ? "textarea" : "input";
   const isTextarea = type === "textarea";
@@ -93,7 +93,7 @@ function FormField({ label, type, name, value, onChange }) {
       </Label>
     </FormFieldWrapper>
   );
-}
+};
 
 FormField.defaultProps = {
   type: "text",
