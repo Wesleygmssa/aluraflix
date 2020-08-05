@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import PageDefault from "../../components/PageDefault";
 import FormField from "../../components/FormField";
 import Button from "../../components/Button";
@@ -67,9 +67,9 @@ function CadastroCategoria() {
         <Button>Cadastrar</Button>
       </form>
       <ul>
-        {categorias.map((categoria, indice) => {
+        {categorias.map((categoria) => {
           // traversing data
-          return <li key={`${categoria}${indice}`}>{categoria.nome}</li>;
+          return <li key={categoria.nome}>{categoria.nome}</li>;
         })}
       </ul>
     </PageDefault>
