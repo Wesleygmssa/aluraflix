@@ -1,37 +1,48 @@
 import React, { useState } from 'react';
-
 import { Link } from 'react-router-dom';
 import PageDefault from '../../components/PageDefault';
 
 
 function CadastroCategoria() {
 
-    const [categorias, setCategorias] = useState([]);
-
-    const valoresIniciais ={
-        nome: 'Categoria Inicial',
-        descricao: 'Descrição inicial',
-        cor: '#000'
+    const valoresIniciais = {
+        nome: '',
+        descricao: '',
+        cor: '',
     }
+    const [categorias, setCategorias] = useState([]); //storage 
 
-    const [values, setValues] = useState(valoresIniciais);
+    const [values, setValues] = useState(valoresIniciais); // input values all
 
-    function setValue(chave, valor){
-        setValues({ ...values,
+
+    function setValue(chave, valor) { 
+        setValues({
+            ...values,
             [chave]: valor // nome: 'valor'
         })
     }
 
     const handleSubmit = (event) => {
-        event.preventDefault();
+        event.preventDefault(); //prevent form action
         setCategorias([
-            ...categorias, 
-            values]);
+            ...categorias, // old values
+                values     // new values
+            ]);
+
+        setValues(valoresIniciais)
+    }
+
+    function handleChange(event) {
+        //  const {getAttribute, value} = event.target
+        setValue(
+            event.target.getAttribute('name'),
+            event.target.value
+        )
     }
 
     return (
         <PageDefault>
-            <h1> Cadastro de Categoria: {values.nome}</h1>
+            <h1> Cadastro de Categoria: {values['nome']}</h1>
             <Link to="/">
                 Ir para home
             </Link>
@@ -42,9 +53,10 @@ function CadastroCategoria() {
                         Nome da Categoria:
                          <input
                             type="text"
-                            value={values.nome}
-                            onChange={(event) => { setValue('nome', event.target.value) }} //mudança no value do input
-                             />
+                            name="nome"
+                            value={values['nome']}
+                            onChange={handleChange} //change in input value
+                        />
                     </label>
                 </div>
                 <div>
@@ -52,11 +64,11 @@ function CadastroCategoria() {
                         Descrição:
                          <textarea
                             type="text"
-                            value={values.descricao}
-                            onChange={(event) => { setValue('descricao', event.target.value) }} //mudança no value do input
-                             >
-
-                             </textarea>
+                            name="descricao"
+                            value={values['descricao']}
+                            onChange={handleChange} 
+                        >
+                        </textarea>
                     </label>
                 </div>
                 <div>
@@ -64,9 +76,10 @@ function CadastroCategoria() {
                         Cor:
                          <input
                             type="color"
-                            value={values.cor}
-                            onChange={(event) => {  setValue('color', event.target.value) }} //mudança no value do input
-                             />
+                            name="cor"
+                            value={values['cor']}
+                            onChange={handleChange}
+                        />
                     </label>
                 </div>
 
@@ -75,11 +88,11 @@ function CadastroCategoria() {
               </button>
             </form>
 
-            <ul>
-                {categorias.map((categoria, indice) => {
+            <ul> 
+                {categorias.map((categoria, indice) => {// traversing data
                     return (
                         <li key={`${categoria}${indice}`}>
-                            {categoria}
+                            {categoria.nome}
                         </li>
                     )
                 })}
