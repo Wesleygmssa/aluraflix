@@ -6,19 +6,19 @@ import PageDefault from '../../components/PageDefault';
 function CadastroCategoria() {
 
     const valoresIniciais = {
-        nome: '',
-        descricao: '',
-        cor: '',
+        name: '',
+        description: '',
+        color: '#000000',
     }
-    const [categorias, setCategorias] = useState([]); //storage 
+    const [categorias, setCategorias] = useState([]); // storage all input
 
-    const [values, setValues] = useState(valoresIniciais); // input values all
+    const [values, setValues] = useState(valoresIniciais); // all input values 
 
 
-    function setValue(chave, valor) { 
+    function setValue(chave, value) { 
         setValues({
             ...values,
-            [chave]: valor // nome: 'valor'
+            [chave]: value // name: 'value'
         })
     }
 
@@ -32,17 +32,16 @@ function CadastroCategoria() {
         setValues(valoresIniciais)
     }
 
-    function handleChange(event) {
-        //  const {getAttribute, value} = event.target
+    function handleChange(event) { // 
         setValue(
-            event.target.getAttribute('name'),
-            event.target.value
+            event.target.getAttribute('name'), //get <input name="name"/>
+            event.target.value // get <input value="valor digitado"/>
         )
     }
 
     return (
         <PageDefault>
-            <h1> Cadastro de Categoria: {values['nome']}</h1>
+            <h1> Cadastro de Categoria: {values['name']}</h1>
             <Link to="/">
                 Ir para home
             </Link>
@@ -53,8 +52,8 @@ function CadastroCategoria() {
                         Nome da Categoria:
                          <input
                             type="text"
-                            name="nome"
-                            value={values['nome']}
+                            name="name"
+                            value={values['name']}
                             onChange={handleChange} //change in input value
                         />
                     </label>
@@ -64,8 +63,8 @@ function CadastroCategoria() {
                         Descrição:
                          <textarea
                             type="text"
-                            name="descricao"
-                            value={values['descricao']}
+                            name="description"
+                            value={values['description']}
                             onChange={handleChange} 
                         >
                         </textarea>
@@ -76,8 +75,8 @@ function CadastroCategoria() {
                         Cor:
                          <input
                             type="color"
-                            name="cor"
-                            value={values['cor']}
+                            name="color"
+                            value={values['color']}
                             onChange={handleChange}
                         />
                     </label>
