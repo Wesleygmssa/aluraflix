@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../components/PageDefault';
+import FormField from '../../components/FormField';
 
 
 function CadastroCategoria() {
 
     const valoresIniciais = {
-        name: '',
-        description: '',
-        color: '#000000',
+        nome: '',
+        descricao: '',
+        cor: '',
     }
-    const [categorias, setCategorias] = useState([]); // storage all input
+    const [categorias, setCategorias] = useState([]); // storage 
 
     const [values, setValues] = useState(valoresIniciais); // all input values 
 
 
-    function setValue(chave, value) { 
+    function setValue(chave, valor) { 
         setValues({
             ...values,
-            [chave]: value // name: 'value'
+            [chave]: valor // nome: 'valor'
         })
     }
 
@@ -34,53 +35,68 @@ function CadastroCategoria() {
 
     function handleChange(event) { // 
         setValue(
-            event.target.getAttribute('name'), //get <input name="name"/>
-            event.target.value // get <input value="valor digitado"/>
+            event.target.getAttribute('name'),
+            event.target.value
         )
     }
 
     return (
         <PageDefault>
-            <h1> Cadastro de Categoria: {values['name']}</h1>
+            <h1> Cadastro de Categoria: {values['nome']}</h1>
             <Link to="/">
                 Ir para home
             </Link>
 
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>
-                        Nome da Categoria:
-                         <input
-                            type="text"
-                            name="name"
-                            value={values['name']}
-                            onChange={handleChange} //change in input value
-                        />
-                    </label>
-                </div>
-                <div>
+
+
+                <FormField
+                    label="Nome da Categoria: "
+                    type="text"
+                    name="nome"
+                    value={values.nome}
+                    onChange={handleChange}
+                />
+
+                <FormField
+                    label="Descrição: "
+                    type="textarea"
+                    name="descricao"
+                    value={values.descricao}
+                    onChange={handleChange}
+                />
+
+                {/* <div>
                     <label>
                         Descrição:
                          <textarea
                             type="text"
-                            name="description"
-                            value={values['description']}
+                            name="descricao"
+                            value={values['descricao']}
                             onChange={handleChange} 
                         >
                         </textarea>
                     </label>
-                </div>
-                <div>
+                </div> */}
+
+                <FormField
+                    label="Cor: "
+                    type="color"
+                    name="cor"
+                    value={values.cor}
+                    onChange={handleChange}
+                />
+                {/* <div>
                     <label>
                         Cor:
                          <input
                             type="color"
-                            name="color"
-                            value={values['color']}
+                            name="cor"
+                            value={values['cor']}
                             onChange={handleChange}
                         />
                     </label>
-                </div>
+                </div> */}
 
                 <button>
                     Cadastrar
