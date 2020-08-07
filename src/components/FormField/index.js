@@ -72,18 +72,26 @@ const Input = styled.input`
   }}
 `;
 
+//props
 const FormField = ({ label, type, name, value, onChange }) => {
   const fieldId = `id_${name}`;
   // const tag = type === "textarea" ? "textarea" : "input";
-  const isTextarea = type === "textarea";
-  const tag = isTextarea ? "textarea" : "input";
-  const hasValue = Boolean(value.length);
+  // const tag = isTextarea ? "textarea" : "input"; //ternary
+  const isTextarea = type === "textarea"; //validation Boolean
+  let tag = "";
+  if (isTextarea) {
+    tag = "textarea";
+  } else {
+    tag = "input";
+  }
+
+  const hasValue = Boolean(value.length); //validation Boolean
 
   return (
     <FormFieldWrapper>
       <Label htmlFor={fieldId}>
         <Input
-          as={tag}
+          as={tag} //force type, with validation
           type={type}
           value={value}
           name={name}
