@@ -78,6 +78,7 @@ const FormField = ({ label, type, name, value, onChange }) => {
   const isTextarea = type === "textarea";
   const tag = isTextarea ? "textarea" : "input";
   const hasValue = Boolean(value.length);
+
   return (
     <FormFieldWrapper>
       <Label htmlFor={fieldId}>
@@ -109,4 +110,5 @@ FormField.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
+
 export default FormField;
