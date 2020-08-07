@@ -39,7 +39,9 @@ function CadastroCategoria() {
 
   useEffect(() => {
     //api
-    const URLTOP = "http://localhost:8080/categorias";
+    const URLTOP = window.location.hostname.includes("localhost")
+      ? "http://localhost:8080/categorias"
+      : "https://devaluraflix.herokuapp.com/categorias";
     axios.get(URLTOP).then((response) => {
       setCategorias([...response.data]);
     });
@@ -98,8 +100,8 @@ function CadastroCategoria() {
 
       <ul>
         {categorias.map((categoria) => {
-          // traversing data
-          return <li key={categoria.nome}>{categoria.nome}</li>;
+          // data mapping
+          return <li key={categoria.nome}>{categoria.titulo}</li>;
         })}
       </ul>
     </PageDefault>
