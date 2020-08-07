@@ -38,6 +38,7 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
+    //api
     const URLTOP = "http://localhost:8080/categorias";
     axios.get(URLTOP).then((response) => {
       setCategorias([...response.data]);
