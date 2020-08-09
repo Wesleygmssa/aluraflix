@@ -13,10 +13,13 @@ function CadastroCategoria() {
     cor: "",
   };
 
+  //form customized
   const { handleChange, values, clearForm } = useForm(valoresIniciais);
 
-  const [categorias, setCategorias] = useState([]); //customization hooks
+  //customization hooks
+  const [categorias, setCategorias] = useState([]);
 
+  //making api
   useEffect(() => {
     const URL_TOP = window.location.hostname.includes("localhost")
       ? "http://localhost:8080/categorias"
@@ -26,6 +29,7 @@ function CadastroCategoria() {
     });
   }, []);
 
+  //handle send submit
   function handleSubmit(infosDoEvento) {
     infosDoEvento.preventDefault();
     setCategorias([...categorias, values]);
@@ -33,6 +37,7 @@ function CadastroCategoria() {
     clearForm();
   }
 
+  //display page
   return (
     <PageDefault>
       <h1>
